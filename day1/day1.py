@@ -9,6 +9,6 @@ def puzzle2(measurements, window_size=3):
     return puzzle1([sum(measurements[i:i+window_size]) for i in range(len(measurements) - window_size + 1)])
 
 if __name__=='__main__':
-    measurements = parse_measurements('day1/input1.txt')
+    measurements = parse_measurements('day1/input.txt')
     print(f'Puzzle 1 answer: {puzzle1(measurements)}')
     print(f'Puzzle 2 answer: {puzzle2(measurements)}')
