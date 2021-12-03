@@ -1,6 +1,6 @@
 def puzzle1():
     x, y = 0, 0
-    v = {'forward': (1, 0), 'up': (0, -1), 'down': (0, 1)}
+    v = {'forward': [1, 0], 'up':[0, -1], 'down': [0, 1]}
     with open('day2/input.txt') as file:
         for line in file.readlines():
             command, amount = line.strip().split()
