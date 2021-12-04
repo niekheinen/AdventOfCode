@@ -38,7 +38,7 @@ def puzzle2(lines, numbers):
 def puzzle1_golf():
     f = '2021/04/input.txt'
     l = open(f).read().split('\n\n')
-    nums = [int(n) for n in lines.pop(0).split(',')]
+    nums = [int(n) for n in l.pop(0).split(',')]
     j = 0
     callnum = lambda board, call: board.replace(call, f)
     haswon = lambda board : 0
@@ -46,7 +46,7 @@ def puzzle1_golf():
     
     
     while (score := max([callscore(b) for b in boards])) == 0:
-        boards = [b for b in boards]
+        boards = [i.replace(nums.pop(0), f) for i in boards]
     print(score)
 
     scores = [[i * b.replace('\n', ' ').split() for i in n] for b in l]
