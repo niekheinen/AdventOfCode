@@ -1,5 +1,5 @@
 def puzzle1():
-    with open('day3/input.txt') as file:
+    with open('2021/03/input.txt') as file:
         lines = file.read().split('\n')
         counter = [0] * (bits := len(lines[0]))
         
@@ -12,15 +12,16 @@ def puzzle1():
 
 
 def puzzle1_golf():
-    l = open('day3/input.txt').read().split('\n')
+    l = open('2021/03/input.txt').read().split('\n')
     c = [0] * (b := len(l[0]))
+    for n in l: c = map(sum, zip(c, [int(i) for i in n]))
     g = int(''.join([str(int(i >= (len(l) / 2))) for i in c]), 2)
     print(g * (g ^ int('1' * b, 2)))
 
 
 # Dit kan ongetwijveld mooier, maar copy-paste is soms ook nice :)
 def puzzle2():
-    with open('day3/input.txt') as file:
+    with open('2021/03/input.txt') as file:
         lines = file.read().split('\n')
 
     def most_common_bit(lines, bit_index):
@@ -42,5 +43,5 @@ def puzzle2():
 
 if __name__=='__main__':
     print(f'Puzzle 1 answer: {puzzle1()}')
-    # puzzle1_golf()
+    puzzle1_golf()
     print(f'Puzzle 2 answer: {puzzle2()}')
