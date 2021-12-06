@@ -14,15 +14,13 @@ def puzzle2(fish):
     c = list(zip(range(9), [0] * 9))
     count = Counter(fish)
     c = [[k, count[k] if k in count.keys() else v] for k, v in c]
-    ret = sum(count.values())
     for _ in range(256):
         new = c[0][1]
         c = [[k - 1, v] for k, v in c]
         del c[0]
         c[6][1] += new
         c.append([8, new])
-        ret += new
-    return ret
+    return sum(t[1] for t in c)
 
 
 if __name__=='__main__':
@@ -30,7 +28,5 @@ if __name__=='__main__':
         lines = [int(i) for i in file.read().split(',')]
         
     print(f'Puzzle 1 answer: {puzzle1(lines)}')
-
-
     print(f'Puzzle 2 answer: {puzzle2(lines)}')
     
