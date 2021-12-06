@@ -1,5 +1,3 @@
-from collections import Counter
-
 def new_day(fish):
     fish = [f - 1 for f in fish]
     return [6 if f == -1 else f for f in fish] + [8] * fish.count(-1)
@@ -11,17 +9,21 @@ def puzzle1(fish):
 
 
 def puzzle2(fish):
-    c = list(zip(range(9), [0] * 9))
-    count = Counter(fish)
-    c = [[k, count[k] if k in count.keys() else v] for k, v in c]
+    c = [0] * 9
+    for f in fish:
+        c[f] += 1
     for _ in range(256):
-        new = c[0][1]
-        c = [[k - 1, v] for k, v in c]
-        del c[0]
-        c[6][1] += new
-        c.append([8, new])
-    return sum(t[1] for t in c)
+        new = c.pop(0)
+        c[6] += new
+        c.append(new)
+    return sum(c)
 
+
+def golf():
+    c, t = [0] * 9, lambda l: ((n:=l[0]), [n + v if i == 6 else v for i, v in enumerate(l[1:])] + [n])    
+    for f in [int(i) for i in open('2021/06/input.txt').read().split(',')]: c[f] += 1
+    for _ in range(256): c = t(c)[1]
+    print(sum(c))
 
 if __name__=='__main__':
     with open('2021/06/input.txt') as file:
@@ -29,4 +31,5 @@ if __name__=='__main__':
         
     print(f'Puzzle 1 answer: {puzzle1(lines)}')
     print(f'Puzzle 2 answer: {puzzle2(lines)}')
-    
+
+    golf() 
