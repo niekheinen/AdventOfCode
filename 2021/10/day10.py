@@ -28,11 +28,11 @@ def puzzle2(lines):
             else:
                 s = ''
                 break
-
+        
         if s != '':
-            for i in reversed(s): 
-                score = score * 5 + score_table[i]            
+            [(score := score * 5 + score_table[x]) for x in reversed(s)]
             scores.append(score)
+
     return sorted(scores)[len(scores)//2]
 
 
