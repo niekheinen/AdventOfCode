@@ -26,13 +26,10 @@ def puzzle2(lines):
             elif close_table[c] == s[-1]:
                 s = s[:-1]
             else:
-                s = ''
                 break
-        
-        if s != '':
+        else:
             [(score := score * 5 + score_table[x]) for x in reversed(s)]
-            scores.append(score)
-
+            scores.append(score)           
     return sorted(scores)[len(scores)//2]
 
 
