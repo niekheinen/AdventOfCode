@@ -39,7 +39,7 @@ def puzzle2(octopusses):
         for x, y in flashers:
             octopusses[y][x] = 0
     
-        if all(all([i == 0 for i in line]) for line in octopusses):
+        if all(line == [0] * dim_x for line in octopusses):
             return i + 1
 
 if __name__=='__main__':    
@@ -48,8 +48,7 @@ if __name__=='__main__':
 
     dim_x, dim_y = len(lines[0]), len(lines)
 
-    lines = [[int(i) for i in line] for line in lines]
+    octopusses = [[int(i) for i in line] for line in lines]
 
-    print(f'Puzzle 1 answer: {puzzle1(copy.deepcopy(lines))}')
-    print(f'Puzzle 2 answer: {puzzle2(copy.deepcopy(lines))}')
-    
+    print(f'Puzzle 1 answer: {puzzle1(copy.deepcopy(octopusses))}')
+    print(f'Puzzle 2 answer: {puzzle2(copy.deepcopy(octopusses))}')
