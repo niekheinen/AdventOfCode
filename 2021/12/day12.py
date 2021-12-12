@@ -15,7 +15,6 @@ def puzzle1(edges):
                     new_paths.add((*p, e[1]))
         
         paths = new_paths
-    # [print(p) for p in paths]
     return len(paths)
 
 
@@ -38,7 +37,6 @@ def puzzle2(edges):
                     new_paths.add((*p, e[1]))
         
         paths = new_paths
-    # [print(p) for p in paths]
     return len(paths)
 
 if __name__=='__main__':
@@ -46,6 +44,5 @@ if __name__=='__main__':
         edges = [tuple(line.split('-')) for line in f.read().split('\n')]
 
 
-
-    #print(f'Puzzle 1 answer: {puzzle1(edges)}')
+    print(f'Puzzle 1 answer: {puzzle1(edges)}')
     print(f'Puzzle 2 answer: {puzzle2(edges)}')
